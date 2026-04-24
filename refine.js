@@ -26,6 +26,6 @@ async function RefineTask(task) {
     const result = await RefineTask(input);
     console.log(result);
   } catch (error) {
-    console.error("Erro ao criar tarefa:", error.message || error);
+    console.error("Erro ao melhorar tarefa:", error.message || error);
   }
 })();
