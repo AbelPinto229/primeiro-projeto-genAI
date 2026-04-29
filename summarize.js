@@ -1,5 +1,9 @@
+
+
+
 import { GoogleGenAI } from "@google/genai";
 import 'dotenv/config';
+import { geminiRequest } from './geminiRequest.js';
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
@@ -8,11 +12,7 @@ const ai = new GoogleGenAI({
 // Função para resumir descrições longas de tarefas
 async function summarize(description) {
   const prompt = `Resume a seguinte descrição de tarefa numa frase simples e objetiva para leitura rápida. Descrição: ${description}`;
-  const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
-    contents: [{ role: "user", parts: [{ text: prompt }] }]
-  });
-  return response.candidates[0].content.parts[0].text;
+  return await geminiRequest(ai, prompt);
 }
 
 (async () => {
@@ -24,3 +24,5 @@ async function summarize(description) {
     console.error("Erro ao resumir descrição:", error.message || error);
   }
 })();
+
+export { summarize };

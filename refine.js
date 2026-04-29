@@ -1,5 +1,8 @@
+
+
 import { GoogleGenAI } from "@google/genai";
 import 'dotenv/config';
+import { geminiRequest } from './geminiRequest.js';
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
@@ -8,11 +11,7 @@ const ai = new GoogleGenAI({
 // transformar texto livre em uma tarefa estruturada
 async function RefineTask(task) {
   const prompt = `Melhora tarefas já existentes, tornando-as mais claras, completas e profissionais. Tarefa: ${task}`;
-  const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
-    contents: [{ role: "user", parts: [{ text: prompt }] }]
-  });
-  return response.candidates[0].content.parts[0].text;
+  return await geminiRequest(ai, prompt);
 }
 
 (async () => {
@@ -29,3 +28,5 @@ async function RefineTask(task) {
     console.error("Erro ao melhorar tarefa:", error.message || error);
   }
 })();
+
+export { RefineTask };
