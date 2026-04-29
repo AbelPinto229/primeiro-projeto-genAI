@@ -7,6 +7,8 @@ import { createTaskFromText } from './create.js';
 import { RefineTask } from './refine.js';
 import { summarize } from './summarize.js';
 import { suggestTags } from './suggestTag.js';
+// imports removidos porque endpoints estão agora em apiChat.js
+// endpoints removidos porque estão agora em apiChat.js
 
 const app = express();
 app.use(bodyParser.json());

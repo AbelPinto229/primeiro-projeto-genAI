@@ -1,6 +1,6 @@
 import { createSystemPrompt } from './systemprompt.js';
 
-async function geminiRequest(ai, prompt, model = "gemini-2.5-flash") {
+async function geminiRequest(ai, prompt, model = "gemini-3-flash-preview") {
   const contents = [
      { role: "user", parts: [{ text: createSystemPrompt() + "\n" + prompt }] }
   ];

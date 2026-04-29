@@ -8,14 +8,18 @@ const ai = new GoogleGenAI({
 });
 
 // Função para classificar prioridade usando few-shot
-(async () => {
-  const text = "site caiu";  
+async function classifyPriority(text) {
   const prompt = `Com base nestes exemplos:
         "site caiu" -> Alta
         "mudar botão" -> Média
         "trocar favicon" -> Baixa
 Classifica a prioridade da tarefa como Alta, Média ou Baixa.  Tarefa: ${text} Prioridade:`;
   return await geminiRequest(ai, prompt);
+}
+
+(async () => {
+  const prioridade = await classifyPriority("site caiu");
+  console.log("Prioridade:", prioridade);
 })();
 
 export { classifyPriority };

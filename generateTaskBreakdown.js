@@ -7,8 +7,7 @@ function generateTaskBreakdown(task) {
   Definição de regras para splitting de tarefas:
   1. Estrutura JSON para subtarefas
   2. Regras para não over-split
-  3. Casos edge (tarefas curtas / vagas)
-  4. O Thinking Mode deve ser usado quando há decisões de arquitetura ou múltiplas etapas envolvidas.`;
+  3. Casos edge (tarefas curtas / vagas)`;
   return geminiRequest(new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }), prompt);
 }
 
