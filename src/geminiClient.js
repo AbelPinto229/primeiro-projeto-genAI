@@ -73,4 +73,4 @@ async function generateJson(prompt, responseJsonSchema, config = {}) {
   });
 }
 
-export { ai, MODEL, extractText, extractIncrementalText, supportChatStream, streamText, generateJs
+export { ai, MODEL, extractText, extractIncrementalText, supportChatStream, streamText, generateJson };

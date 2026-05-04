@@ -60,17 +60,39 @@ Este projeto implementa um backend Express para o "ClickBot", um assistente inte
 - `dotenv`
 - `@google/genai`
 
-## Como usar
-1. Configure a variável de ambiente `GEMINI_API_KEY` em um arquivo `.env`.
-2. Instale dependências:
-   ```bash
-   npm install
-   ```
-3. Inicie o servidor:
-   ```bash
-   npm start
-   ```
-4. A API estará disponível em `http://localhost:3000`.
+## Estrutura do Projeto
+```
+primeiro projeto genAI/
+├── src/                    # Código fonte principal
+│   ├── api.js             # Servidor Express principal
+│   ├── db.js              # Configuração e funções do SQLite
+│   ├── geminiClient.js    # Cliente Gemini com streaming
+│   ├── taskParser.js      # Parser de tarefas com Zod
+│   ├── bugTriage.js       # Triage automática de bugs
+│   ├── meetingSummary.js  # Sumário de reuniões
+│   ├── weeklyPlanner.js   # Planner semanal
+│   └── sentimentDashboard.js # Dashboard de sentimento
+├── routes/                # Rotas adicionais
+│   └── apiChat.js         # Rotas de chat (se usadas)
+├── utils/                 # Utilitários e funções auxiliares
+│   ├── geminiRequest.js
+│   ├── systemPrompt.js
+│   ├── create.js
+│   ├── refine.js
+│   ├── summarize.js
+│   ├── suggestTag.js
+│   ├── classifyPriority.js
+│   ├── generateNames.js
+│   ├── planSprint.js
+│   ├── summarizeHistory.js
+│   ├── generateTaskBreakdown.js
+│   └── chatHistory.js
+├── exercicio1.js          # Exemplos/exercícios
+├── exercicio2.js
+├── package.json
+├── README.md
+└── clickbot.db*           # Arquivos do SQLite (db, -wal, -shm)
+```
 
 ## Endpoints principais
 - `GET /chat?message=...` - conversa de suporte em streaming SSE.

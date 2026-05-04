@@ -75,4 +75,8 @@ router.post("/clickbot/breakdown", async (req, res) => {
     const breakdown = await generateTaskBreakdown(task);
     res.json({ breakdown });
   } catch (error) {
-    res.status(500).json({ error: error.message || error
+    res.status(500).json({ error: error.message || error });
+  }
+});
+
+export default router;
